@@ -45,7 +45,7 @@ h2 {
 
 .swiper-slide img {
     width: 100%;
-    height: auto; /* Ajusta para manter a proporção */
+    height: 900px; /* Ajusta para manter a proporção */
     border-radius: 10px;
 }
 
