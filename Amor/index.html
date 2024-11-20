@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jhoni & Verônca</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Dark Mode Switch -->
+        <div class="dark-mode-toggle" id="darkModeToggle">
+            <img src="https://img.icons8.com/ios-filled/50/000000/light-on.png" alt="Lâmpada" id="lampIcon">
+        </div>
+
+        <h1>Jhoni & Verônca</h1>
+
+        <!-- Carousel -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="image/01.jpeg" alt="Foto 1"></div>
+                <div class="swiper-slide"><img src="image/02.jpeg" alt="Foto 2"></div>
+                <div class="swiper-slide"><img src="image/03.jpeg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="image/04.jpeg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="image/05.jpeg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="image/06.jpeg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="image/07.jpeg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="image/08.jpeg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="image/09.jpeg" alt="Foto 3"></div>
+                <div class="swiper-slide"><img src="image/10.jpeg" alt="Foto 3"></div>
+
+            </div>
+            <!-- Botões de navegação -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <!-- Contador -->
+        <div class="counter">
+            <h2>Tempo desde 22 de julho de 2024</h2>
+            <p id="timer">Carregando...</p>
+        </div>
+
+        <!-- QR Code -->
+        <div class="qrcode">
+            <h2>Compartilhar</h2>
+            <div id="qrcode"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
