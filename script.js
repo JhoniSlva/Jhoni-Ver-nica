@@ -54,13 +54,19 @@ function updateTimer() {
 setInterval(updateTimer, 1000);
 updateTimer(); // Atualização inicial
 
+// Substitua pela URL real do seu site
+const siteUrl = "https://jhonieveronica.netlify.app/";
 
-// QR Code da URL
-const currentUrl = window.location.href;
+// Elemento onde o QR Code será exibido
 const qrcodeElement = document.getElementById("qrcode");
 
-QRCode.toCanvas(qrcodeElement, currentUrl, function (error) {
-    if (error) console.error(error);
+// Gera o QR Code no canvas
+QRCode.toCanvas(qrcodeElement, siteUrl, function (error) {
+    if (error) {
+        console.error("Erro ao gerar QR Code:", error);
+    } else {
+        console.log("QR Code gerado com sucesso!");
+    }
 });
 
 // Dark Mode
@@ -75,4 +81,32 @@ darkModeToggle.addEventListener("click", () => {
     } else {
         lampIcon.src = "https://img.icons8.com/ios-filled/50/000000/light-on.png";
     }
+});
+
+// Referências ao áudio e botão
+const music = document.getElementById("background-music");
+const musicToggle = document.getElementById("music-toggle");
+
+// Estado inicial
+let isPlaying = false;
+
+// Alternar reprodução de música
+musicToggle.addEventListener("click", () => {
+    if (isPlaying) {
+        music.pause();
+        musicToggle.textContent = "🎵 Tocar Música";
+    } else {
+        music.play().catch((err) => {
+            console.error("Erro ao tocar música:", err);
+        });
+        musicToggle.textContent = "🔇 Pausar Música";
+    }
+    isPlaying = !isPlaying;
+});
+
+// Força o navegador a permitir autoplay se possível
+document.addEventListener("DOMContentLoaded", () => {
+    music.play().catch((err) => {
+        console.warn("A reprodução automática foi bloqueada pelo navegador:", err);
+    });
 });

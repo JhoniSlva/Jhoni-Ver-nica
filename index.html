@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -43,9 +44,36 @@
             <p id="timer">Carregando...</p>
         </div>
 
+        <div class="qrcode">
+            <canvas id="qrcode"></canvas>
+        </div>
+        <!-- Controle de música -->
+        <div class="music-player">
+            <button id="music-toggle">
+                🎵 Tocar Música
+            </button>
+            <audio id="background-music" loop>
+                <source src="music/videoplayback.mp3" type="audio/mp3">
+                Seu navegador não suporta áudio.
+            </audio>
+        </div>
+        
+    </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        // Substitua pelo link desejado
+        const siteUrl = "https://jhonieveronica.netlify.app/";
+        const qrcodeElement = document.getElementById("qrcode");
+
+        QRCode.toCanvas(qrcodeElement, siteUrl, function (error) {
+            if (error) {
+                console.error("Erro ao gerar QR Code:", error);
+            } else {
+                console.log("QR Code gerado com sucesso!");
+            }
+        });
+    </script>
 </body>
 </html>
