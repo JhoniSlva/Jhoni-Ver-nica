@@ -14,7 +14,7 @@ const swiper = new Swiper('.swiper-container', {
 });
 
 // Data inicial: 22 de julho de 2024
-const startDate = new Date("2024-07-22T00:00:00");
+const startDate = new Date("2024-06-22T00:00:00");
 const timerElement = document.getElementById("timer");
 
 function updateTimer() {
