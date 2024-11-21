@@ -42,7 +42,7 @@ h2 {
 
 .swiper-slide img {
     width: 100%;
-    height: 800px;
+    height: auto;
     border-radius: 10px;
 }
 
