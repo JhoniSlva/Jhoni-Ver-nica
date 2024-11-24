@@ -1,87 +1,81 @@
-// Configuração do Swiper.js
-const swiper = new Swiper('.swiper-container', {
-    slidesPerView: 1,
-    spaceBetween: 10,
-    loop: false,
-    autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
+document.addEventListener("DOMContentLoaded", () => {
+    initializeCarousel();
+    initializeTimer();
+    initializeQRCode("https://jhonieveronica.netlify.app/");
+    setupDarkModeToggle();
+    setupMusicPlayer();
 });
 
-// Data inicial: 22 de julho de 2024
-const startDate = new Date("2024-06-22T00:00:00");
-const timerElement = document.getElementById("timer");
+// Função para configurar o carrossel
+function initializeCarousel() {
+    new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+    });
+}
 
-function updateTimer() {
+
+// Data de início
+const startDate = new Date("2024-07-22T00:00:00");
+
+// Atualiza os elementos no HTML
+function updateCounter() {
     const now = new Date();
+    const diff = now - startDate;
 
-    // Diferença total em milissegundos
-    let diff = now - startDate;
-
-    // Cálculo dos anos
     const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
-    diff -= years * (1000 * 60 * 60 * 24 * 365.25);
+    const months = Math.floor(
+        (diff % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44)
+    );
+    const days = Math.floor(
+        (diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24)
+    );
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    // Cálculo dos meses
-    const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
-    diff -= months * (1000 * 60 * 60 * 24 * 30.44);
-
-    // Cálculo dos dias
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    diff -= days * (1000 * 60 * 60 * 24);
-
-    // Cálculo das horas
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    diff -= hours * (1000 * 60 * 60);
-
-    // Cálculo dos minutos
-    const minutes = Math.floor(diff / (1000 * 60));
-    diff -= minutes * (1000 * 60);
-
-    // Cálculo dos segundos
-    const seconds = Math.floor(diff / 1000);
-
-    // Atualiza o elemento HTML
-    timerElement.textContent = `${years} anos, ${months} meses, ${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    // Atualiza os valores no HTML sem reiniciar animações
+    document.getElementById("years").textContent = `${years} anos`;
+    document.getElementById("months").textContent = `${months} meses`;
+    document.getElementById("days").textContent = `${days} dias`;
+    document.getElementById("hours").textContent = `${hours} horas`;
+    document.getElementById("minutes").textContent = `${minutes} minutos`;
+    document.getElementById("seconds").textContent = `${seconds} segundos`;
 }
 
 // Atualiza o contador a cada segundo
-setInterval(updateTimer, 1000);
-updateTimer(); // Atualização inicial
+setInterval(updateCounter, 1000);
 
-// Substitua pela URL real do seu site
-const siteUrl = "https://jhonieveronica.netlify.app/";
+// Atualiza imediatamente ao carregar
+updateCounter();
+// Função para configurar o QR Code
+function initializeQRCode(url) {
+    const qrcodeElement = document.getElementById("qrcode");
+    QRCode.toCanvas(qrcodeElement, url, error => {
+        if (error) console.error("Erro ao gerar QR Code:", error);
+    });
+}
 
-// Elemento onde o QR Code será exibido
-const qrcodeElement = document.getElementById("qrcode");
+// Função para configurar o modo escuro
+function setupDarkModeToggle() {
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const lampIcon = document.getElementById("lampIcon");
 
-// Gera o QR Code no canvas
-QRCode.toCanvas(qrcodeElement, siteUrl, function (error) {
-    if (error) {
-        console.error("Erro ao gerar QR Code:", error);
-    } else {
-        console.log("QR Code gerado com sucesso!");
-    }
-});
-
-// Dark Mode
-const darkModeToggle = document.getElementById("darkModeToggle");
-const lampIcon = document.getElementById("lampIcon");
-
-darkModeToggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-
-    if (document.body.classList.contains("dark-mode")) {
-        lampIcon.src = "https://img.icons8.com/ios-filled/50/ffffff/light-off.png";
-    } else {
-        lampIcon.src = "https://img.icons8.com/ios-filled/50/000000/light-on.png";
-    }
-});
+    darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        lampIcon.src = document.body.classList.contains("dark-mode")
+            ? "https://img.icons8.com/ios-filled/50/ffffff/light-off.png"
+            : "https://img.icons8.com/ios-filled/50/000000/light-on.png";
+    });
+}
 
 // Referências ao áudio e botão
 const music = document.getElementById("background-music");
@@ -90,8 +84,8 @@ const musicToggle = document.getElementById("music-toggle");
 // Estado inicial
 let isPlaying = false;
 
-// Alternar reprodução de música
-musicToggle.addEventListener("click", () => {
+// Função para alternar a reprodução de música
+function toggleMusic() {
     if (isPlaying) {
         music.pause();
         musicToggle.textContent = "🎵 Tocar Música";
@@ -102,11 +96,25 @@ musicToggle.addEventListener("click", () => {
         musicToggle.textContent = "🔇 Pausar Música";
     }
     isPlaying = !isPlaying;
-});
+}
+
+// Adiciona evento de clique ao botão de música
+musicToggle.addEventListener("click", toggleMusic);
 
 // Força o navegador a permitir autoplay se possível
 document.addEventListener("DOMContentLoaded", () => {
     music.play().catch((err) => {
-        console.warn("A reprodução automática foi bloqueada pelo navegador:", err);
+        console.warn("Reprodução automática bloqueada pelo navegador:", err);
     });
 });
+
+// Obtém o elemento do carrossel
+const swiperWrapper = document.querySelector('.swiper-wrapper');
+
+// Gera dinamicamente as imagens do carrossel
+for (let i = 1; i <= 10; i++) {
+    const slide = document.createElement('div');
+    slide.classList.add('swiper-slide');
+    slide.innerHTML = `<img src="image/${String(i).padStart(2, '0')}.jpeg" alt="Foto ${i}">`;
+    swiperWrapper.appendChild(slide);
+}

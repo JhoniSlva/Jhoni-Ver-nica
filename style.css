@@ -49,17 +49,80 @@ h2 {
 .swiper-button-next, .swiper-button-prev {
     color: #007BFF;
 }
-
-/* Contador */
-.counter {
-    margin-bottom: 20px;
+.counter{
+text-align: center;
+margin: 20px auto;
+max-width: 300px;
+font-family: 'Rubik', sans-serif;
+color: var(--text-color, #000);
 }
 
-#timer {
-    font-size: 1.5em;
-    font-weight: bold;
+.time-box {
+display: flex;
+flex-direction: column;
+gap: 10px; /* Espaçamento entre os itens */
 }
 
+.time-unit {
+font-size: 1.2rem;
+font-weight: 600;
+margin: 0;
+padding: 8px;
+border: 2px solid transparent;
+border-radius: 3px;
+background: rgba(255, 255, 255, 0.1);
+opacity: 1; /* Sempre visível após a animação inicial */
+animation: border-animation 3s linear infinite; /* Apenas a animação de borda é contínua */
+}
+
+body.loaded .time-unit {
+animation: fade-in 0.8s ease forwards, border-animation 3s linear infinite;
+}
+
+.time-unit {
+font-size: 1.2rem;
+font-weight: 600;
+margin: 0;
+padding: 8px;
+border: 2px solid transparent;
+border-radius: 3px;
+background: rgba(255, 255, 255, 0.1);
+opacity: 0; /* Inicialmente invisível */
+transform: translateY(20px); /* Inicialmente deslocado */
+animation: fade-in 0.8s ease forwards, border-animation 3s linear infinite;
+animation-delay: var(--delay, 0s); /* Adiciona delay variável */
+}
+
+/* Animação de borda RGB */
+@keyframes border-animation {
+0% {
+    border-color: rgb(255, 0, 0);
+}
+25% {
+    border-color: rgb(0, 255, 0);
+}
+50% {
+    border-color: rgb(0, 0, 255);
+}
+75% {
+    border-color: rgb(255, 255, 0);
+}
+100% {
+    border-color: rgb(255, 0, 0);
+}
+}
+
+/* Animação de fade-in */
+@keyframes fade-in {
+0% {
+    opacity: 0;
+    transform: translateY(20px);
+}
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
 /* QR Code */
 .qrcode {
     display: flex;

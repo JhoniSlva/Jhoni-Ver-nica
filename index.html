@@ -11,69 +11,40 @@
 </head>
 <body>
     <div class="container">
-        <!-- Dark Mode Switch -->
         <div class="dark-mode-toggle" id="darkModeToggle">
             <img src="https://img.icons8.com/ios-filled/50/000000/light-on.png" alt="Lâmpada" id="lampIcon">
         </div>
-
         <h1>Jhoni & Verônica</h1>
-
-        <!-- Carousel -->
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="image/01.jpeg" alt="Foto 1"></div>
-                <div class="swiper-slide"><img src="image/02.jpeg" alt="Foto 2"></div>
-                <div class="swiper-slide"><img src="image/03.jpeg" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="image/04.jpeg" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="image/05.jpeg" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="image/06.jpeg" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="image/07.jpeg" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="image/08.jpeg" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="image/09.jpeg" alt="Foto 3"></div>
-                <div class="swiper-slide"><img src="image/10.jpeg" alt="Foto 3"></div>
-
             </div>
-            <!-- Botões de navegação -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
-
-        <!-- Contador -->
-        <div class="counter">
-            <h2>Tempo desde 22 de junho de 2024</h2>
-            <p id="timer">Carregando...</p>
+        <div class="counter"><h2>Tempo desde 22 de Junho de 2024</h2>
+            <div class="time-box">
+                <div class="time-unit" id="years" style="--delay: 0s;">0 anos</div>
+                <div class="time-unit" id="months" style="--delay: 0.5s;">0 meses</div>
+                <div class="time-unit" id="days" style="--delay: 1s;">0 dias</div>
+                <div class="time-unit" id="hours" style="--delay: 1.5s;">0 horas</div>
+                <div class="time-unit" id="minutes" style="--delay: 2s;">0 minutos</div>
+                <div class="time-unit" id="seconds" style="--delay: 2.5s;">0 segundos</div>
+            </div>
         </div>
-
+        
+        
         <div class="qrcode">
             <canvas id="qrcode"></canvas>
         </div>
-        <!-- Controle de música -->
         <div class="music-player">
-            <button id="music-toggle">
-                🎵 Tocar Música
-            </button>
+            <button id="music-toggle">🎵 Tocar Música</button>
             <audio id="background-music" loop>
-                <source src="music/videoplayback.mp3" type="audio/mp3">
+                <source src="music/Tão linda.mp3" type="audio/mp3">
                 Seu navegador não suporta áudio.
             </audio>
         </div>
-        
     </div>
-
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Substitua pelo link desejado
-        const siteUrl = "https://jhonieveronica.netlify.app/";
-        const qrcodeElement = document.getElementById("qrcode");
-
-        QRCode.toCanvas(qrcodeElement, siteUrl, function (error) {
-            if (error) {
-                console.error("Erro ao gerar QR Code:", error);
-            } else {
-                console.log("QR Code gerado com sucesso!");
-            }
-        });
-    </script>
 </body>
 </html>
