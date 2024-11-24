@@ -24,7 +24,7 @@ function initializeCarousel() {
 
 
 // Data de início
-const startDate = new Date("2024-07-22T00:00:00");
+const startDate = new Date("2024-06-22T18:00:00");
 
 // Atualiza os elementos no HTML
 function updateCounter() {
