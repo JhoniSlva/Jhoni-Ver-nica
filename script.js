@@ -111,10 +111,37 @@ document.addEventListener("DOMContentLoaded", () => {
 // Obtém o elemento do carrossel
 const swiperWrapper = document.querySelector('.swiper-wrapper');
 
-// Gera dinamicamente as imagens do carrossel
-for (let i = 1; i <= 10; i++) {
-    const slide = document.createElement('div');
-    slide.classList.add('swiper-slide');
-    slide.innerHTML = `<img src="image/${String(i).padStart(2, '0')}.jpeg" alt="Foto ${i}">`;
-    swiperWrapper.appendChild(slide);
-}
+document.addEventListener("DOMContentLoaded", () => {
+    const imageFolder = 'image/';
+    const totalImages = 10;
+    const imageFormat = '.jpeg';
+    const swiperWrapper = document.querySelector('.swiper-wrapper');
+
+    // Gerar slides dinamicamente
+    for (let i = 1; i <= totalImages; i++) {
+        const slide = document.createElement('div');
+        slide.classList.add('swiper-slide');
+
+        const img = document.createElement('img');
+        img.src = `${imageFolder}${String(i).padStart(2, '0')}${imageFormat}`;
+        img.alt = `Imagem ${i}`;
+
+        slide.appendChild(img);
+        swiperWrapper.appendChild(slide);
+    }
+
+    // Configurar o Swiper
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        loop: true,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+});

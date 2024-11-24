@@ -40,12 +40,17 @@ h2 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.swiper-slide img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
 
+/* Ajustes para o carrossel e imagens */
+.swiper-slide img {
+    display: block;
+    width: 100%; /* Ajusta a largura da imagem ao tamanho do contêiner */
+    height: auto; /* Mantém a proporção */
+    max-height: 800px; /* Define uma altura máxima */
+    object-fit: contain;
+    border-radius: 10px;
+    background-color: #000; /* Fundo para lidar com imagens que não preenchem totalmente */
+}
 .swiper-button-next, .swiper-button-prev {
     color: #007BFF;
 }
@@ -189,4 +194,24 @@ body.dark-mode .swiper-button-prev {
 #music-toggle:hover {
     background-color: #0056b3;
     transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .swiper-container {
+        max-width: 100%;
+    }
+
+    .swiper-slide img {
+        max-height: 300px; /* Ajusta altura máxima para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper-container {
+        max-width: 100%;
+    }
+
+    .swiper-slide img {
+        max-height: 200px; /* Ajusta altura máxima para dispositivos muito pequenos */
+    }
 }
