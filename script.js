@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function initializeCarousel() {
     new Swiper('.swiper-container', {
         slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: 16,
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -113,7 +113,7 @@ const swiperWrapper = document.querySelector('.swiper-wrapper');
 
 document.addEventListener("DOMContentLoaded", () => {
     const imageFolder = 'image/';
-    const totalImages = 17;
+    const totalImages = 16;
     const imageFormat = '.jpeg';
     const swiperWrapper = document.querySelector('.swiper-wrapper');
 
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Configurar o Swiper
     const swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
-        spaceBetween: 17,
+        spaceBetween: 16,
         loop: true,
         navigation: {
             nextEl: '.swiper-button-next',
