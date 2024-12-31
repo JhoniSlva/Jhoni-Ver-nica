@@ -113,7 +113,7 @@ const swiperWrapper = document.querySelector('.swiper-wrapper');
 
 document.addEventListener("DOMContentLoaded", () => {
     const imageFolder = 'image/';
-    const totalImages = 10;
+    const totalImages = 17;
     const imageFormat = '.jpeg';
     const swiperWrapper = document.querySelector('.swiper-wrapper');
 
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Configurar o Swiper
     const swiper = new Swiper('.swiper-container', {
         slidesPerView: 1,
-        spaceBetween: 10,
+        spaceBetween: 17,
         loop: true,
         navigation: {
             nextEl: '.swiper-button-next',
