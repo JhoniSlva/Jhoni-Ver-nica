@@ -64,18 +64,20 @@ function initializeQRCode(url) {
     });
 }
 
-// Função para configurar o modo escuro
-function setupDarkModeToggle() {
-    const darkModeToggle = document.getElementById("darkModeToggle");
-    const lampIcon = document.getElementById("lampIcon");
+document.getElementById('darkModeToggle').addEventListener('click', function() {
+    const body = document.body;
+    const lampIcon = document.getElementById('lampIcon');
 
-    darkModeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-        lampIcon.src = document.body.classList.contains("dark-mode")
-            ? "https://img.icons8.com/ios-filled/50/ffffff/light-off.png"
-            : "https://img.icons8.com/ios-filled/50/000000/light-on.png";
-    });
-}
+    // Alterna a classe 'dark-mode' no body
+    body.classList.toggle('dark-mode');
+
+    // Troca o ícone da lâmpada dependendo do modo
+    if (body.classList.contains('dark-mode')) {
+        lampIcon.src = 'https://img.icons8.com/ios-filled/50/ffffff/light-off.png'; // Ícone de lâmpada apagada
+    } else {
+        lampIcon.src = 'https://img.icons8.com/ios-filled/50/000000/light-on.png'; // Ícone de lâmpada acesa
+    }
+});
 
 // Referências ao áudio e botão
 const music = document.getElementById("background-music");
