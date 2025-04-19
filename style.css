@@ -216,3 +216,48 @@ body.dark-mode .swiper-button-prev {
         max-height: 200px; /* Ajusta altura máxima para dispositivos muito pequenos */
     }
 }
+
+
+.romantic-message {
+    background: rgba(255, 240, 245, 0.6);
+    border: 2px solid #ffb6c1;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 30px auto;
+    max-width: 900px;
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3em;
+    color: #8b1e3f;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(6px);
+  }
+  
+  .romantic-message h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #e91e63;
+    font-weight: bold;
+  }
+  
+/* Animação suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Corações flutuando */
+@keyframes floatHearts {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-800px) scale(1.5); opacity: 0; }
+}
+
+.heart {
+  position: fixed;
+  bottom: -50px;
+  color: #ff6b81;
+  font-size: 24px;
+  animation: floatHearts 8s linear infinite;
+  pointer-events: none;
+  z-index: 999;
+}
